@@ -6,7 +6,7 @@
 """
 import sys
 
-from core import get_trending_topics_for_country
+from core import get_trending_topics_for_country, get_followers
 
 def show_trending_hashtags(country):
 	"""
@@ -17,10 +17,16 @@ def show_trending_hashtags(country):
 
 	print trends
 
+def show_followers(user=None):
+	followers = get_followers(user)
+
+	print followers
+
 if __name__ == "__main__":
 
 	available_commands = {
-		"trending": show_trending_hashtags
+		"trending": show_trending_hashtags,
+		"followers": show_followers
 	}
 
 	selected_command = sys.argv[1]

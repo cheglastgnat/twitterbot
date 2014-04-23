@@ -12,6 +12,9 @@ TTYTTER_BIN = "./TTYitter.pl"
 ## Regular expression to extract hashtags from a list of trending topics
 RE_TOPIC = re.compile(r'.*\"(?P<topic>#.*)\"')
 
+## Regular expression to extract twitter handles from followers
+RE_FOLLOWERS = re.compile(r'\S[^\(\)]+\(([^\(\)]+)\).*')
+
 def get_trending_topics_for_country(country):
     """
         Returns a list of the trending hashtags for a given country
@@ -34,6 +37,31 @@ def get_trending_topics_for_country(country):
             trending_topics.append(m.groupdict()['topic'])
 
     return trending_topics
+
+def get_followers(user=None):
+    """
+        returns a list of twitter handles of all followers of the
+        given user. If user is none returns own followers
+    """
+    if user is None:
+        proc = Popen(
+            [TTYTTER_BIN, "-runcommand=/followers"],
+            stdout=PIPE
+        )
+    else:
+        proc = Popen(
+            [TTYTTER_BIN, "-runcommand=/followers %s" % user],
+            stdout=PIPE
+        )
+
+    followers = []
+
+    for line in iter(proc.stdout.readline, ''):
+        m = RE_FOLLOWERS.match(line)
+        if m:
+            followers.append(m.group(1))
+
+    return followers
 
 def tweet(tweet_content):
     ## Post tweet to Twitter
