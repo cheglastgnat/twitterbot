@@ -29,7 +29,6 @@ def get_trending_topics_for_country(country):
     ## Extract #hashtags from trending topics
     trending_topics = []
     for line in iter(twitter_proc.stdout.readline, ''):
-        print line
         m = RE_TOPIC.match(line)
         if m is not None:
             trending_topics.append(m.groupdict()['topic'])
