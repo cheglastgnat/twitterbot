@@ -50,7 +50,10 @@ def get_trending_topics_for_country(location_name):
 
     ## Extract #hashtags from trending topics
     trending_topics = []
-    for line in iter(twitter_proc.stdout.readline, ''):
+    for line in twitter_proc.stdout.readlines():
+        ## NOTE: In Python3, the stdout of subprocess.Popen returns
+        #        byte arrays, not strings
+        line = line.decode('utf-8').strip()
         m = RE_TOPIC.match(line)
         if m is not None:
             trending_topics.append(m.groupdict()['topic'])

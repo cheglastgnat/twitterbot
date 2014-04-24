@@ -38,6 +38,7 @@ def post_random_content_with_trending_hashtag():
     ## Assemble tweet ...
     content = "%s %s" % (post, topic)
     ## ... and post it
+    content = "Wie ein Steeein, der deinen Namen trägt... #Schlagernacht"
     tweet(content)
 
 
