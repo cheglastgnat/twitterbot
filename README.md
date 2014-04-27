@@ -4,6 +4,11 @@ twitterbot
 Twitter automation using TTYtter
 
 
+! WARNING !
+===========
+This project is new and very not production-ready yet (even under the very generous assumption that there is some kind of production that could possibly use it).
+
+
 Preparation
 -----------
 1. Execute `install.py` and follow the instructions
