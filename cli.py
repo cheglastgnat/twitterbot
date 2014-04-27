@@ -18,7 +18,7 @@ def show_trending_hashtags(location_name):
         
         @param location_name Name of the target location (see core.py)
     """
-    trends = get_trending_topics_for_country(country)
+    trends = get_trending_topics_for_country(location_name)
     print(trends)
 
 
