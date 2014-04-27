@@ -6,10 +6,10 @@
 # Helper module for obtaining short page gists from Wikipedia.
 #
 # © Nikolaus Mayer, 2014
-# 
-# REQUIRED SOFTWARE: 
+#
+# REQUIRED SOFTWARE:
 # ==================
-# Python's "requests" module. Find it at 
+# Python's "requests" module. Find it at
 #   python-requests.org
 # Install using pip
 # > pip install requests
@@ -23,11 +23,10 @@
 ## Imports
 ## 'Requests' module for GETting stuff from the web
 import requests
-## JSON for parsing 
+
+## JSON for parsing
 import json
 import re
-## HTML module for unescaping HTML entities (e.g. '&gt;' becomes '>')
-import html
 
 
 class WikiSnippet:
@@ -56,7 +55,7 @@ class WikiSnippet:
     def GetSnippet(self, topic='', max_length=100):
         """
             Try to query Wikipedia
-            @param topic The desired page name from which the snippet 
+            @param topic The desired page name from which the snippet
                          should be read
             @param max_length The maximum length of the snippet
             @returns the first max_length characters (TODO: more or less)
@@ -68,16 +67,14 @@ class WikiSnippet:
         self.parameters['max_length'] = max_length*3
         ## Retrieve raw JSON data from Wikipedia
         try:
-            req = requests.get(self.request_template.format(**self.parameters))              
+            req = requests.get(self.request_template.format(**self.parameters))
         except:
             print(' ERROR: Could not get a response from Wikipedia!')
             return ''
 
-        ## Unescape HTML entities
-        text = html.unescape(req.text)
         ## Parse JSON structure
         try:
-            as_json = json.loads(text)
+            as_json = json.loads(req.text)
         except:
             print(' ERROR: Could not parse response JSON structure!')
             return ''
@@ -110,7 +107,8 @@ if __name__=='__main__':
     print('This is what en.wikipedia.org has to say about Isaac Asimov...')
     print('')
     test_instance = WikiSnippet('en')
-    print(test_instance.GetSnippet('Isaac Asimov', 200))
+    text = bytes(test_instance.GetSnippet('Isaac Asimov', 200), "ascii")
+    print(text.decode("unicode_escape"))
     print('')
 
 
