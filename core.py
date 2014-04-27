@@ -8,15 +8,20 @@
 
 ## Imports
 import re
+import configparser
 
 ## Yahoo! Weather RSS client (for WOEIDs)
 import yweather
 from subprocess import call, Popen, PIPE
 
+## config file
+config = configparser.ConfigParser()
+config.read('config/twitterbot.cfg')
+
 ## The TTYtter executable file
-TTYTTER_BIN = None
+TTYTTER_BIN = config['core']['TTYtterBin']
 ## Check for unset TTYTTER_BIN
-if TTYTTER_BIN is None:
+if TTYTTER_BIN is '':
     print("ERROR: TTYtter executable path is unset. "
           "Set the correct path to your TTYtter executable file "
           "above the line where the following exception occured.")
