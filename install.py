@@ -73,4 +73,5 @@ print("--------------------------------------")
 print("If you don't have a twitter account create one.\n"
       "Then call '" + TTYtterFileLocation + "' from your command line \n"
       "and follow the instructions to setup TTYtter.\n"
+      "Put some posts into 'config/posts.txt' that will be randomly selected by the bot.\n"
       "Now you are ready to use twitterbot by calling 'script.py'.")
