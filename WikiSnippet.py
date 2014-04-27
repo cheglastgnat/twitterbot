@@ -6,6 +6,17 @@
 # Helper module for obtaining short page gists from Wikipedia.
 #
 # © Nikolaus Mayer, 2014
+# 
+# REQUIRED SOFTWARE: 
+# ==================
+# Python's "requests" module. Find it at 
+#   python-requests.org
+# Install using pip
+# > pip install requests
+# or easy_install
+# > easy_install requests
+# or find it on GitHub:
+#   https://github.com/kennethreitz/requests
 #
 ##
 
