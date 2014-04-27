@@ -68,3 +68,8 @@ with open('config/twitterbot.cfg', 'w') as configfile:
 
 print("--------------------------------------")
 print("Installation completed!")
+print("--------------------------------------")
+
+print("If you don't have a twitter account create one."
+      "Then call '" + TTYtterFilePath + "' from your command line and follow the instructions to setup TTYtter."
+      "Now you are ready to use twitterbot by calling script.py")
