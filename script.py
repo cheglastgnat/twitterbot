@@ -3,7 +3,7 @@
 
 ##
 #
-# 
+#
 #
 ##
 
@@ -12,7 +12,7 @@ import random
 import re
 from subprocess import call, Popen, PIPE
 ## Local imports
-from core import get_trending_topics_for_country, tweet, TTYTTER_BIN
+from core import get_trending_topics_for_country, tweet, TTYTTER_BIN, config
 
 ## Seed PRNG using current system time
 random.seed()
@@ -25,10 +25,11 @@ def post_random_content_with_trending_hashtag():
     """
 
     ## Read a list of available tweet texts.
-    POSTS = [line.strip() for line in open('posts.txt').readlines()]
+    POSTS = [line.strip() for line in open('config/posts.txt').readlines()]
 
     ## Get trending topics for Germany
-    trending_topics = get_trending_topics_for_country("Germany")
+    trending_topics = get_trending_topics_for_country(
+                            config['script']['TrendingTopicsCountry'])
 
     ## Randomly select a #hashtag ...
     topic = trending_topics[random.randint(0,len(trending_topics)-1)]
