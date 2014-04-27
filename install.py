@@ -26,10 +26,10 @@ TrendingTopicsCountry='Germany'
 # Install prompt #
 ##################
 print("In order to install twitterbot, please setup some variables.")
-TTYtterUrl=input("Url to the newest TTYtter file ["+TTYtterUrl+"]") or TTYtterUrl
-TTYtterFilePath=input("Install dir of TTYtter ["+TTYtterFilePath+"]") or TTYtterFilePath
+TTYtterUrl=input("Url to the newest TTYtter file ["+TTYtterUrl+"] ") or TTYtterUrl
+TTYtterFilePath=input("Install dir of TTYtter ["+TTYtterFilePath+"] ") or TTYtterFilePath
 TrendingTopicsCountry=input("Country of trending topics that will be randomly" 
-                            "selected ["+TrendingTopicsCountry+"]") or TrendingTopicsCountry
+                            "selected ["+TrendingTopicsCountry+"] ") or TrendingTopicsCountry
 
 
 print("--------------------------------------")
@@ -70,6 +70,7 @@ print("--------------------------------------")
 print("Installation completed!")
 print("--------------------------------------")
 
-print("If you don't have a twitter account create one."
-      "Then call '" + TTYtterFilePath + "' from your command line and follow the instructions to setup TTYtter."
-      "Now you are ready to use twitterbot by calling script.py")
+print("If you don't have a twitter account create one.\n"
+      "Then call '" + TTYtterFileLocation + "' from your command line \n"
+      "and follow the instructions to setup TTYtter.\n"
+      "Now you are ready to use twitterbot by calling 'script.py'.")
